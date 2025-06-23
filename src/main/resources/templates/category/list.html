@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>VAK</title>
+  <link rel="stylesheet" th:href="@{/VAK.css}">
+</head>
+<body>
+<main th:fragment="content">
+  <h2><span class="mdi--category-outline"></span></h2>
+  <div class="main-container">
+    <div class="taskbar">
+      <form method="get" action="/categories" class="w-80">
+        <input type="text" name="keyword" th:value="${keyword}" placeholder="Search" class="w-100">
+      </form>
+      <div>
+        <a th:href="@{/categories/new}">
+          <button type="button" class="taskbar-btn"><span class="mdi--add-bold"></span></button>
+        </a>
+        <button type="button" class="taskbar-btn" onclick="openFilterModal()"><span class="mdi--filter-outline"></span>
+        </button>
+      </div>
+    </div>
+    <div id="filterOverlay" class="modal-overlay hidden" onclick="closeFilterModal()"></div>
+    <div id="filterModal" class="modal hidden">
+      <form method="get" action="/categories">
+        <div class="filter-container">
+          <select name="field" class="mr-8">
+            <option value="name" th:selected="${field == 'name'}">Name</option>
+          </select>
+          <select name="direction">
+            <option value="asc" th:selected="${direction == 'asc'}">Ascending</option>
+            <option value="desc" th:selected="${direction == 'desc'}">Descending</option>
+          </select>
+        </div>
+        <div class="modal-buttons">
+          <a th:href="@{/categories}" class="taskbar-btn">Reset</a>
+          <button type="submit" class="taskbar-btn">Apply</button>
+          <button type="button" class="taskbar-btn" onclick="closeFilterModal()">Cancel</button>
+        </div>
+      </form>
+    </div>
+    <table>
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Actions</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr th:each="category : ${categories}">
+        <td th:text="${category.name}">Name</td>
+        <td>
+          <a th:href="@{'/categories/edit/' + ${category.categoryId}}"><span class="mdi--edit"></span></a>
+          <a th:href="@{'/categories/delete/' + ${category.categoryId}}"><span class="mdi--delete-outline"></span></a>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+    <div class="pagination">
+      <ul>
+        <li th:classappend="${currentPage == 0} ? 'disabled'">
+          <a th:if="${currentPage > 0}"
+             th:href="@{'/categories?page=0&keyword=' + ${keyword} + '&field=' + ${field} + '&direction=' + ${direction}}">«</a>
+          <span th:if="${currentPage == 0}">«</span>
+        </li>
+        <li th:classappend="${currentPage == 0} ? 'disabled'">
+          <a th:if="${currentPage > 0}"
+             th:href="@{'/categories?page=' + (${currentPage - 1}) + '&keyword=' + ${keyword} + '&field=' + ${field} + '&direction=' + ${direction}}">&lt;</a>
+          <span th:if="${currentPage == 0}">&lt;</span>
+        </li>
+        <li class="active"><span th:text="${currentPage + 1}">1</span></li>
+        <li th:classappend="${currentPage >= totalPages - 1} ? 'disabled'">
+          <a th:if="${currentPage < totalPages - 1}"
+             th:href="@{'/categories?page=' + (${currentPage + 1}) + '&keyword=' + ${keyword} + '&field=' + ${field} + '&direction=' + ${direction}}">&gt;</a>
+          <span th:if="${currentPage >= totalPages - 1}">&gt;</span>
+        </li>
+        <li th:classappend="${currentPage >= totalPages - 1} ? 'disabled'">
+          <a th:if="${currentPage < totalPages - 1}"
+             th:href="@{'/categories?page=' + (${totalPages - 1}) + '&keyword=' + ${keyword} + '&field=' + ${field} + '&direction=' + ${direction}}">»</a>
+          <span th:if="${currentPage >= totalPages - 1}">»</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+</main>
+</body>
+</html>

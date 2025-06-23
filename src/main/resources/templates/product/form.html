@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>VAK</title>
+  <link rel="stylesheet" th:href="@{/VAK.css}">
+</head>
+<body>
+<main th:fragment="content">
+  <h2><span class="mdi--menu"></span></h2>
+  <div class="main-container">
+    <form th:action="@{/products}" th:object="${product}" method="post" class="form-container">
+      <input type="hidden" th:field="*{pdId}"/>
+      <input type="text" th:field="*{pdName}" placeholder="Name" required class="form-util"/><br/>
+      <input type="number" th:field="*{pdPrice}" step="0.01" placeholder="Price" required class="form-util"/><br/>
+      <input type="number" th:field="*{pdQuantity}" placeholder="Quantity" required class="form-util"/><br/>
+      <textarea th:field="*{pdInfo}" placeholder="Info" required class="form-util"></textarea><br/>
+      <select th:field="*{category}" required class="form-util">
+        <option th:each="c : ${categories}" th:value="${c.categoryId}" th:text="${c.name}"></option>
+      </select>
+      <button type="submit" class="taskbar-btn form-btn form-util">Save</button>
+    </form>
+    <a th:href="@{/products}">Back</a>
+  </div>
+  <div th:if="${error}" class="error-msg" th:text="${error}"></div>
+</main>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>VAK</title>
+  <link rel="stylesheet" th:href="@{/VAK.css}">
+</head>
+<body>
+<main th:fragment="content">
+  <h2><span class="mdi--database-import-outline"></span></h2>
+  <div class="main-container">
+    <form th:action="@{/imports}" th:object="${import}" method="post" class="form-container">
+      <input type="hidden" th:field="*{ipId}"/>
+      <select th:field="*{product}" required class="form-util">
+        <option th:each="p : ${products}" th:value="${p.pdId}" th:text="${p.pdName}"></option>
+      </select>
+      <input type="number" th:field="*{pdPrice}" placeholder="Price" step="0.01" required class="form-util"/><br/>
+      <input type="number" th:field="*{pdQuantity}" placeholder="Quantity" required class="form-util"/><br/>
+      <button type="submit" class="taskbar-btn form-btn form-util">Save</button>
+    </form>
+    <a th:href="@{/imports}">Back</a>
+  </div>
+</main>
+</body>
+</html>

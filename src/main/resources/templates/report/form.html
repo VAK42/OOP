@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>VAK</title>
+  <link rel="stylesheet" th:href="@{/VAK.css}">
+</head>
+<body>
+<main th:fragment="content">
+  <h2><span class="mdi--bug-outline"></span></h2>
+  <div class="main-container">
+    <form th:action="@{/reports}" th:object="${report}" method="post" class="form-container">
+      <input type="hidden" th:field="*{reportId}"/>
+      <input type="text" th:field="*{rpName}" placeholder="Title" required class="form-util"/><br/>
+      <textarea th:field="*{rpInfo}" placeholder="Info" required class="form-util"></textarea><br/>
+      <button type="submit" class="taskbar-btn form-btn form-util">Save</button>
+    </form>
+    <a th:href="@{/reports}">Back</a>
+  </div>
+</main>
+</body>
+</html>

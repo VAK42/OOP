@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>VAK</title>
+  <link rel="stylesheet" th:href="@{/VAK.css}">
+</head>
+<body>
+<main th:fragment="content">
+  <h2><span class="mdi--category-outline"></span></h2>
+  <div class="main-container">
+    <form th:action="@{/categories}" th:object="${category}" method="post" class="form-container">
+      <input type="hidden" th:field="*{categoryId}"/>
+      <input type="text" th:field="*{name}" placeholder="Name" required class="form-util"/><br/>
+      <button type="submit" class="taskbar-btn form-btn form-util">Save</button>
+    </form>
+    <a th:href="@{/categories}">Back</a>
+  </div>
+  <div th:if="${error}" class="error-msg" th:text="${error}"></div>
+</main>
+</body>
+</html>

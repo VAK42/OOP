@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>VAK</title>
+  <link rel="stylesheet" th:href="@{/VAK.css}">
+</head>
+<body>
+<div class="sidebar">
+  <div class="logo-container">
+    <img th:src="@{/OOP.png}" alt="VAK" class="logo">
+  </div>
+  <nav class="nav-container">
+    <!--/* @thymesVar id="request" type="jakarta.servlet.http.HttpServletRequest" */-->
+    <a th:href="@{/}" class="sidebar-btn" th:classappend="${request.requestURI == '/'} ? 'active' : ''"><span
+      class="mdi--monitor-dashboard"></span>Dashboard</a>
+    <a th:href="@{/categories}" class="sidebar-btn"
+       th:classappend="${request.requestURI.startsWith('/categories')} ? 'active' : ''"><span
+      class="mdi--category-plus-outline"></span>Category</a>
+    <a th:href="@{/products}" class="sidebar-btn"
+       th:classappend="${request.requestURI.startsWith('/products')} ? 'active' : ''"><span
+      class="mdi--microsoft-xbox-controller-menu"></span>Product</a>
+    <a th:href="@{/imports}" class="sidebar-btn"
+       th:classappend="${request.requestURI.startsWith('/imports')} ? 'active' : ''"><span
+      class="mdi--application-import"></span>Import</a>
+    <a th:href="@{/exports}" class="sidebar-btn"
+       th:classappend="${request.requestURI.startsWith('/exports')} ? 'active' : ''"><span
+      class="mdi--application-export"></span>Export</a>
+    <a th:href="@{/reports}" class="sidebar-btn"
+       th:classappend="${request.requestURI.startsWith('/reports')} ? 'active' : ''"><span
+      class="mdi--bug-report"></span>Report</a>
+    <a th:href="@{/users}" class="sidebar-btn"
+       th:classappend="${request.requestURI.startsWith('/users')} ? 'active' : ''"><span
+      class="mdi--user"></span>User</a>
+  </nav>
+</div>
+<div class="main">
+  <div th:replace="~{${view} :: content}"></div>
+</div>
+<script th:src="@{/VAK.js}"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.5.0/dist/chart.umd.min.js"></script>
+<script th:src="@{/OOP.js}"></script>
+</body>
+</html>

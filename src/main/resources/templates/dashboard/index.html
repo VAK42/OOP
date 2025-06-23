@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>VAK</title>
+  <link rel="stylesheet" th:href="@{/VAK.css}">
+</head>
+<body>
+<main th:fragment="content">
+  <div class="main-container">
+    <div class="dashboard-info">
+      <div class="dashboard-tab">
+        <p class="dashboard-title">Revenue - Month</p>
+        <p class="dashboard-detail" th:text="${dashboardData.revenueThisMonth}"></p>
+      </div>
+      <div class="dashboard-tab">
+        <p class="dashboard-title">Revenue - Year</p>
+        <p class="dashboard-detail" th:text="${dashboardData.revenueThisYear}"></p>
+      </div>
+      <div class="dashboard-tab">
+        <p class="dashboard-title">Top Product - Month</p>
+        <p class="dashboard-detail" th:text="${dashboardData.bestSellingProductMonth}"></p>
+      </div>
+      <div class="dashboard-tab">
+        <p class="dashboard-title">Top Product - Year</p>
+        <p class="dashboard-detail" th:text="${dashboardData.bestSellingProductYear}"></p>
+      </div>
+    </div>
+    <div class="dashboard-chart">
+      <div class="line">
+        <h2>Monthly Revenue</h2>
+        <canvas id="monthlyRevenueChart" class="line-graph"></canvas>
+      </div>
+      <div class="pie">
+        <h2>Top 10 Of Month</h2>
+        <canvas id="topProductsChart" class="pie-chart"></canvas>
+      </div>
+    </div>
+    <div id="chart-data" th:data-months="${monthlyRevenueJson}" th:data-products="${topProductsJson}"
+         style="display:none"></div>
+  </div>
+</main>
+</body>
+</html>
