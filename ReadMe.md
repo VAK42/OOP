@@ -336,7 +336,6 @@ _Custom User Reports_
   
 ## **VIII - Diagrams**  
 - Class Diagram  
-  <img src="/img/ERD.png" alt="ERD"/>  
   
 ```mermaid
 erDiagram
@@ -574,21 +573,6 @@ stateDiagram-v2
 - JUnit For Unit Tests  
 - Mockito For Mocking & Integration
   
-- Category Test  
-  <img src="img/CategoryTest.png" alt="Category Test"/>  
-- Product Test  
-  <img src="img/ProductTest.png" alt="Product Test"/>  
-- Import Test  
-  <img src="img/ImportTest.png" alt="Import Test"/>  
-- Export Test  
-  <img src="img/ExportTest.png" alt="Export Test"/>  
-- Report Test  
-  <img src="img/ReportTest.png" alt="Report Test"/>
-- User Test  
-  <img src="img/UserTest.png" alt="User Test"/>  
-- General Test  
-  <img src="img/GeneralTest.png" alt="User Test"/>  
-  
 ---
   
 ## **X - Instructions**  
@@ -688,27 +672,3 @@ stateDiagram-v2
 - https://dev.mysql.com/doc/
 - https://www.chartjs.org/docs/latest/
 - https://git-scm.com/doc
-  
----
-  
-## XIV - Gallery  
-  
-- Dashboard  
-  <img src="img/Dashboard.png" alt="Dashboard"/>  
-- Category  
-  <img src="img/Category.png" alt="Category"/>  
-- Product  
-  <img src="img/Product.png" alt="Product"/>  
-- Import  
-  <img src="img/Import.png" alt="Import"/>  
-- Export  
-  <img src="img/Export.png" alt="Export"/>  
-- Report  
-  <img src="img/Report.png" alt="Report"/>
-- User  
-  <img src="img/User.png" alt="User"/>  
-
-## XV - Future Integration  
-  
-- Authentication
-- Confirmation Popup
